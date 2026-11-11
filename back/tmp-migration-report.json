@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-07-18T16:31:36.936Z",
+  "summary": {
+    "legacyClientsFound": 1,
+    "linked": 1,
+    "unmatched": 0,
+    "potentialDuplicatesByName": 0,
+    "potentialDuplicatesByDomain": 0
+  },
+  "linked": [
+    {
+      "clientId": 11,
+      "code": "CLI-U29",
+      "utilisateurId": 29,
+      "email": "client@vitalait.com"
+    }
+  ],
+  "unmatched": [],
+  "potentialDuplicates": [],
+  "note": "Aucune fusion automatique. Relisez potentialDuplicates et fusionnez manuellement si besoin."
+}

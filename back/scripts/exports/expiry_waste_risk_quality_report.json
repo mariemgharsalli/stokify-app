@@ -1,0 +1,331 @@
+{
+  "generated_at": "2026-09-18T14:25:46.813Z",
+  "real_data": true,
+  "simulation": false,
+  "insufficient_for_supervised_sklearn": true,
+  "lots_analyses": 22,
+  "lots_avec_dlc": 8,
+  "snapshots_generes": 16,
+  "lignes_finales": 16,
+  "lots_distincts_csv": 6,
+  "lots_fermes": 6,
+  "lots_ouverts": 0,
+  "y_waste_0": 1,
+  "y_waste_1": 5,
+  "y_waste_unit": "lots_distincts",
+  "lignes_exclues": 0,
+  "lignes_exclues_detail": [],
+  "quantite_negative_detectee": 0,
+  "quantite_negative_detail": [],
+  "json_invalides": 0,
+  "json_invalides_detail": [],
+  "lots_legacy": 2,
+  "lots_sans_article": 0,
+  "lots_sans_dlc": 12,
+  "dlc_avant_entree": 0,
+  "incoherences_stock": 74,
+  "incoherences_stock_detail": [
+    {
+      "key": "5:1",
+      "stock": 520,
+      "lots": 0
+    },
+    {
+      "key": "7:2",
+      "stock": 30,
+      "lots": 1111
+    },
+    {
+      "key": "8:2",
+      "stock": 1200,
+      "lots": 0
+    },
+    {
+      "key": "6:1",
+      "stock": 100,
+      "lots": 0
+    },
+    {
+      "key": "9:1",
+      "stock": 100,
+      "lots": 0
+    },
+    {
+      "key": "10:1",
+      "stock": 50,
+      "lots": 20
+    },
+    {
+      "key": "12:4",
+      "stock": 550,
+      "lots": 0
+    },
+    {
+      "key": "10:3",
+      "stock": 1,
+      "lots": 0
+    },
+    {
+      "key": "12:3",
+      "stock": 100,
+      "lots": 0
+    },
+    {
+      "key": "11:3",
+      "stock": 100,
+      "lots": 0
+    },
+    {
+      "key": "13:3",
+      "stock": 0,
+      "lots": 50
+    },
+    {
+      "key": "15:5",
+      "stock": 200,
+      "lots": 0
+    },
+    {
+      "key": "10:4",
+      "stock": 900,
+      "lots": 0
+    },
+    {
+      "key": "25:8",
+      "stock": 100,
+      "lots": 0
+    },
+    {
+      "key": "26:8",
+      "stock": 50,
+      "lots": 450
+    },
+    {
+      "key": "27:7",
+      "stock": 11262,
+      "lots": 460
+    },
+    {
+      "key": "25:6",
+      "stock": 100,
+      "lots": 0
+    },
+    {
+      "key": "26:7",
+      "stock": 10000,
+      "lots": 0
+    },
+    {
+      "key": "26:6",
+      "stock": 2000,
+      "lots": 0
+    },
+    {
+      "key": "27:8",
+      "stock": 100160,
+      "lots": 50
+    }
+  ],
+  "evenements_sans_lot": 75,
+  "evenements_sans_lot_detail": [
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 3
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 4
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 6
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 8
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 11
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 12
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 13
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 22
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 23
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 24
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 25
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 28
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 29
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 30
+    },
+    {
+      "kind": "TRANSFERT_NON_IMPUTABLE",
+      "source": "mouvement",
+      "sourceId": 32
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 33
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 34
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 35
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 37
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 45
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 49
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 50
+    },
+    {
+      "kind": "IN_ACHAT",
+      "source": "mouvement",
+      "sourceId": 53
+    },
+    {
+      "kind": "TRANSFERT_NON_IMPUTABLE",
+      "source": "mouvement",
+      "sourceId": 59
+    },
+    {
+      "kind": "TRANSFERT_NON_IMPUTABLE",
+      "source": "mouvement",
+      "sourceId": 60
+    },
+    {
+      "kind": "INVENTAIRE_SANS_LOT",
+      "source": "mouvement",
+      "sourceId": 1
+    },
+    {
+      "kind": "INVENTAIRE_SANS_LOT",
+      "source": "mouvement",
+      "sourceId": 2
+    },
+    {
+      "kind": "INVENTAIRE_SANS_LOT",
+      "source": "mouvement",
+      "sourceId": 9
+    },
+    {
+      "kind": "INVENTAIRE_SANS_LOT",
+      "source": "mouvement",
+      "sourceId": 10
+    },
+    {
+      "kind": "INVENTAIRE_SANS_LOT",
+      "source": "mouvement",
+      "sourceId": 41
+    }
+  ],
+  "fallback_lotId_utilise": 4,
+  "qc_avoir_non_prorate": 0,
+  "qc_avoir_sans_lotsConsumed": 2,
+  "qc_initiale_fallback": 16,
+  "qc_y_proxy_restante": 3,
+  "leakage_detected": false,
+  "leakage_detail": [],
+  "doublons": 0,
+  "csv_path": "C:\\Users\\ghars\\Downloads\\PFE2_complet\\PFE2\\back\\scripts\\exports\\expiry_waste_risk.csv",
+  "csv_columns": [
+    "lot_id",
+    "numero",
+    "article_id",
+    "article_code",
+    "depot_id",
+    "famille_id",
+    "as_of_date",
+    "horizon_jours",
+    "date_fabrication",
+    "date_expiration",
+    "quantite_initiale",
+    "quantite_restante_asof",
+    "pourcentage_consomme",
+    "age_du_lot",
+    "duree_vie_jours",
+    "jours_restants_avant_expiration",
+    "pct_vie_ecoulee",
+    "ventes_7j",
+    "ventes_30j",
+    "vitesse_moyenne_journaliere",
+    "ventes_lot_asof",
+    "ventes_lot_fiable",
+    "nombre_de_mouvements",
+    "nombre_sorties_vente_lot",
+    "prix_unitaire",
+    "prix_vente",
+    "valeur_stock",
+    "strategie_sortie",
+    "mode_tracage",
+    "qte_predite_dlc_heuristique",
+    "ratio_couverture",
+    "observation_fermee",
+    "y_waste",
+    "y_qty",
+    "y_valeur",
+    "split_role",
+    "source"
+  ],
+  "source": "real_data"
+}

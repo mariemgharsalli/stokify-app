@@ -1,0 +1,115 @@
+{
+  "generatedAt": "2026-10-03T13:44:01.375Z",
+  "rows": [
+    {
+      "articleId": 1,
+      "mois": "2026-03",
+      "quantite": 120
+    },
+    {
+      "articleId": 6,
+      "mois": "2026-04",
+      "quantite": 40
+    },
+    {
+      "articleId": 7,
+      "mois": "2026-04",
+      "quantite": 20
+    },
+    {
+      "articleId": 10,
+      "mois": "2026-04",
+      "quantite": 1
+    },
+    {
+      "articleId": 25,
+      "mois": "2026-05",
+      "quantite": 10
+    },
+    {
+      "articleId": 27,
+      "mois": "2026-05",
+      "quantite": 342
+    },
+    {
+      "articleId": 27,
+      "mois": "2026-06",
+      "quantite": 40
+    },
+    {
+      "articleId": 28,
+      "mois": "2026-05",
+      "quantite": 500
+    },
+    {
+      "articleId": 28,
+      "mois": "2026-06",
+      "quantite": 1
+    },
+    {
+      "articleId": 28,
+      "mois": "2026-07",
+      "quantite": 100
+    },
+    {
+      "articleId": 29,
+      "mois": "2026-05",
+      "quantite": 210
+    },
+    {
+      "articleId": 29,
+      "mois": "2026-06",
+      "quantite": 60
+    },
+    {
+      "articleId": 30,
+      "mois": "2026-05",
+      "quantite": 50
+    },
+    {
+      "articleId": 30,
+      "mois": "2026-06",
+      "quantite": 110
+    },
+    {
+      "articleId": 30,
+      "mois": "2026-07",
+      "quantite": 10
+    },
+    {
+      "articleId": 41,
+      "mois": "2026-06",
+      "quantite": 65
+    },
+    {
+      "articleId": 41,
+      "mois": "2026-07",
+      "quantite": 46
+    },
+    {
+      "articleId": 45,
+      "mois": "2026-06",
+      "quantite": 40
+    },
+    {
+      "articleId": 45,
+      "mois": "2026-07",
+      "quantite": 200
+    },
+    {
+      "articleId": 46,
+      "mois": "2026-06",
+      "quantite": 200
+    },
+    {
+      "articleId": 47,
+      "mois": "2026-06",
+      "quantite": 50
+    },
+    {
+      "articleId": 47,
+      "mois": "2026-07",
+      "quantite": 50
+    }
+  ]
+}

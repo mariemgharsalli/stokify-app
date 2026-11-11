@@ -1,0 +1,1943 @@
+/* ── Coûts de stockage — design entreprise (Fiori / Odoo) ── */
+
+
+
+@keyframes coutFadeUp {
+
+  from { opacity: 0; transform: translateY(10px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes coutFadeDown {
+
+  from { opacity: 0; transform: translateY(-6px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes coutPulse {
+
+  0%, 100% { opacity: 1; transform: scale(1); }
+
+  50% { opacity: 0.5; transform: scale(0.9); }
+
+}
+
+
+
+@keyframes coutTabContent {
+
+  from { opacity: 0; transform: translateY(8px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes coutTabContentSlide {
+
+  from { opacity: 0; transform: translateX(10px); }
+
+  to { opacity: 1; transform: translateX(0); }
+
+}
+
+
+
+@keyframes coutSlideInLeft {
+
+  from { opacity: 0; transform: translateX(-12px); }
+
+  to { opacity: 1; transform: translateX(0); }
+
+}
+
+
+
+@keyframes coutMonthSlideLeft {
+
+  from { opacity: 0; transform: translateX(14px); }
+
+  to { opacity: 1; transform: translateX(0); }
+
+}
+
+
+
+@keyframes coutMonthSlideRight {
+
+  from { opacity: 0; transform: translateX(-14px); }
+
+  to { opacity: 1; transform: translateX(0); }
+
+}
+
+
+
+@keyframes coutBackdropIn {
+
+  from { opacity: 0; }
+
+  to { opacity: 1; }
+
+}
+
+
+
+@keyframes coutModalSlide {
+
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+
+  to { opacity: 1; transform: scale(1) translateY(0); }
+
+}
+
+
+
+@keyframes coutDrawerIn {
+
+  from { opacity: 0; transform: translateX(28px); }
+
+  to { opacity: 1; transform: translateX(0); }
+
+}
+
+
+
+@keyframes coutDrawerOut {
+
+  from { opacity: 1; transform: translateX(0); }
+
+  to { opacity: 0; transform: translateX(28px); }
+
+}
+
+
+
+@keyframes coutKpiCascade {
+
+  from { opacity: 0; transform: translateY(10px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes coutShimmerSweep {
+
+  0% { background-position: -200% 0; }
+
+  100% { background-position: 200% 0; }
+
+}
+
+
+
+@keyframes coutDepotSelectInvite {
+
+  0%, 100% { box-shadow: 0 0 0 0 rgba(55, 138, 221, 0.35); }
+
+  50% { box-shadow: 0 0 0 4px rgba(55, 138, 221, 0.12); }
+
+}
+
+
+
+@keyframes coutUnitSelectInvite {
+
+  0%, 100% { box-shadow: 0 0 0 0 rgba(127, 119, 221, 0.35); }
+
+  50% { box-shadow: 0 0 0 4px rgba(127, 119, 221, 0.12); }
+
+}
+
+
+
+@keyframes coutDepotWarehousePulse {
+
+  0%, 100% { transform: scale(1); }
+
+  50% { transform: scale(1.05); }
+
+}
+
+
+
+@keyframes coutDepotSelectedFlash {
+
+  0% { box-shadow: 0 0 0 0 rgba(55, 138, 221, 0.4); }
+
+  100% { box-shadow: 0 0 0 8px rgba(55, 138, 221, 0); }
+
+}
+
+
+
+@keyframes coutFloat {
+
+  0%, 100% { transform: translateY(0); }
+
+  50% { transform: translateY(-4px); }
+
+}
+
+
+
+@keyframes coutRowEnter {
+
+  from { opacity: 0; transform: translateY(6px); max-height: 0; }
+
+  to { opacity: 1; transform: translateY(0); max-height: 120px; }
+
+}
+
+
+
+@keyframes coutRowExit {
+
+  to {
+
+    opacity: 0;
+
+    transform: translateX(-12px);
+
+    max-height: 0;
+
+    padding-top: 0;
+
+    padding-bottom: 0;
+
+    margin: 0;
+
+    border-width: 0;
+
+  }
+
+}
+
+
+
+@keyframes coutAlertPulse {
+
+  0%, 100% { transform: scale(1); }
+
+  50% { transform: scale(1.06); }
+
+}
+
+
+
+@keyframes coutToastIn {
+
+  from { opacity: 0; transform: translateY(-6px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes coutKpiBarGrow {
+
+  from { width: 0 !important; }
+
+  to { width: var(--bar-target, 100%); }
+
+}
+
+
+
+@keyframes coutSegmentGrow {
+
+  from { transform: scaleX(0); }
+
+  to { transform: scaleX(1); }
+
+}
+
+
+
+@keyframes coutCountUp {
+
+  from { opacity: 0.4; }
+
+  to { opacity: 1; }
+
+}
+
+
+
+@keyframes coutTabSlide {
+
+  from { opacity: 0.7; }
+
+  to { opacity: 1; }
+
+}
+
+
+
+@keyframes coutSparkDraw {
+
+  from { stroke-dashoffset: var(--spark-len, 200); }
+
+  to { stroke-dashoffset: 0; }
+
+}
+
+
+
+@keyframes coutVerdictIn {
+
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+
+  to { opacity: 1; transform: translateY(0) scale(1); }
+
+}
+
+
+
+@keyframes coutDeltaPop {
+
+  from { opacity: 0; transform: translateY(4px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes fadeUp {
+
+  from { opacity: 0; transform: translateY(10px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes tabContent {
+
+  from { opacity: 0; transform: translateY(6px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+
+
+@keyframes backdropIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes modalSlide {
+
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+
+  to { opacity: 1; transform: scale(1) translateY(0); }
+
+}
+
+@keyframes slideInLeft {
+
+  from { opacity: 0; transform: translateX(-12px); }
+
+  to { opacity: 1; transform: translateX(0); }
+
+}
+
+
+
+/* ── Tokens locaux ── */
+
+.cout-page {
+
+  position: relative;
+
+}
+
+
+
+/* ── Hero — carte solide avec bandeau accent ── */
+
+.cout-hero {
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  border: 1px solid var(--border-default);
+
+  background: var(--bg-card);
+
+  padding: 1.25rem 1.5rem;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
+
+  animation: coutFadeDown 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+.cout-hero::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  height: 3px;
+
+  background: linear-gradient(90deg, #BA7517 0%, #378ADD 50%, #1D9E75 100%);
+
+}
+
+
+
+.cout-hero-icon {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 48px;
+
+  height: 48px;
+
+  border-radius: 12px;
+
+  background: #BA7517;
+
+  color: #fff;
+
+  box-shadow: 0 2px 8px rgba(186, 117, 23, 0.35);
+
+  flex-shrink: 0;
+
+}
+
+
+
+.cout-hero-title {
+
+  font-size: 1.375rem;
+
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+
+  color: var(--text-primary);
+
+  line-height: 1.25;
+
+}
+
+
+
+.cout-metric-pill {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.4rem;
+
+  border-radius: 8px;
+
+  padding: 6px 12px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  border-width: 1px;
+
+  border-style: solid;
+
+  animation: coutFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+}
+
+
+
+.cout-metric-pill:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+.cout-metric-pill-dot {
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.cout-metric-pill-dot--pulse {
+
+  animation: coutPulse 2s ease-in-out infinite;
+
+}
+
+
+
+/* ── Onglets — indicateur glissant + hover teinté ── */
+
+.cout-tabs-wrap {
+
+  animation: coutFadeDown 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+
+}
+
+
+
+.cout-tabs {
+
+  position: relative;
+
+  display: inline-flex;
+
+  gap: 2px;
+
+  padding: 4px;
+
+  border-radius: 12px;
+
+  background: var(--bg-input);
+
+  border: 1px solid var(--border-default);
+
+}
+
+
+
+.cout-tab-indicator {
+
+  position: absolute;
+
+  top: 4px;
+
+  bottom: 4px;
+
+  border-radius: 8px;
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-default);
+
+  box-shadow:
+
+    0 1px 4px rgba(0, 0, 0, 0.08),
+
+    inset 0 -2px 0 0 var(--cout-tab-accent, #7F77DD);
+
+  transition:
+
+    left 240ms cubic-bezier(0.22, 1, 0.36, 1),
+
+    width 240ms cubic-bezier(0.22, 1, 0.36, 1),
+
+    box-shadow 200ms ease;
+
+  will-change: left, width;
+
+}
+
+
+
+.cout-tab-btn {
+
+  position: relative;
+
+  z-index: 1;
+
+  display: inline-flex;
+
+  shrink: 0;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border: none;
+
+  background: transparent;
+
+  border-radius: 8px;
+
+  padding: 8px 14px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: color 0.18s ease, background-color 0.18s ease;
+
+}
+
+
+
+.cout-tab-btn:hover:not(.cout-tab-btn--active) {
+
+  color: var(--cout-tab-hover-color, var(--text-primary));
+
+  background: var(--cout-tab-hover-bg, var(--bg-hover));
+
+}
+
+
+
+.cout-tab-btn--active {
+
+  font-weight: 600;
+
+}
+
+
+
+.cout-tab-panel {
+
+  min-height: 420px;
+
+  animation: coutTabContentSlide 230ms cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+/* ── Sections & panneaux ── */
+
+.cout-dot-grid {
+
+  border-radius: 14px;
+
+  border: 1px solid var(--border-default);
+
+  background: var(--bg-card);
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+}
+
+
+
+.cout-dashed-sep {
+
+  border-top: 1px dashed var(--border-default);
+
+}
+
+
+
+.cout-fade-up {
+
+  animation: coutFadeUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+/* ── KPI cards ── */
+
+.cout-kpi-card {
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-default);
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  animation: coutKpiCascade 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+}
+
+
+
+.cout-kpi-card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+
+  border-color: var(--cout-kpi-accent, #378ADD);
+
+}
+
+
+
+.cout-kpi-bar {
+
+  animation: coutKpiBarGrow 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+.cout-kpi-value {
+
+  animation: coutCountUp 0.6s ease both;
+
+}
+
+
+
+.cout-kpi-delta {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 3px;
+
+  margin-top: 6px;
+
+  padding: 2px 7px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  animation: coutDeltaPop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+.cout-kpi-delta--up-good {
+
+  color: #1D9E75;
+
+  background: rgba(29, 158, 117, 0.12);
+
+  border: 1px solid rgba(29, 158, 117, 0.28);
+
+}
+
+
+
+.cout-kpi-delta--up-bad {
+
+  color: #E24B4A;
+
+  background: rgba(226, 75, 74, 0.12);
+
+  border: 1px solid rgba(226, 75, 74, 0.28);
+
+}
+
+
+
+.cout-kpi-delta--down-good {
+
+  color: #1D9E75;
+
+  background: rgba(29, 158, 117, 0.12);
+
+  border: 1px solid rgba(29, 158, 117, 0.28);
+
+}
+
+
+
+.cout-kpi-delta--down-bad {
+
+  color: #E24B4A;
+
+  background: rgba(226, 75, 74, 0.12);
+
+  border: 1px solid rgba(226, 75, 74, 0.28);
+
+}
+
+
+
+.cout-kpi-delta--flat {
+
+  color: var(--text-muted);
+
+  background: var(--bg-input);
+
+  border: 1px solid var(--border-default);
+
+}
+
+
+
+.cout-kpi-pulse-halo {
+
+  border-color: #E24B4A !important;
+
+  box-shadow: 0 0 0 2px rgba(226, 75, 74, 0.2);
+
+}
+
+
+
+.cout-kpi-icon-wrap {
+
+  transition: transform 0.2s ease;
+
+}
+
+
+
+.cout-kpi-card:hover .cout-kpi-icon-wrap {
+
+  transform: translateY(-1px);
+
+}
+
+
+
+/* ── Sélecteurs dépôt / unité ── */
+
+.depot-selector-card,
+
+.unit-selector-card {
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-default);
+
+  border-radius: 14px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  border-top: 3px solid #378ADD;
+
+}
+
+
+
+.unit-selector-card {
+
+  border-top-color: #7F77DD;
+
+}
+
+
+
+.depot-selector-card.depot-selector-empty,
+
+.unit-selector-card.unit-selector-empty {
+
+  border-top-color: var(--border-default);
+
+}
+
+
+
+.depot-selector-card.depot-selector-invite .depot-select-wrap > div > button {
+
+  animation: coutDepotSelectInvite 2s ease-in-out infinite;
+
+}
+
+
+
+.unit-selector-card.unit-selector-invite .unit-select-wrap > div > button {
+
+  animation: coutUnitSelectInvite 2s ease-in-out infinite;
+
+}
+
+
+
+.depot-selector-card.depot-selector-flash {
+
+  animation: coutDepotSelectedFlash 0.6s ease;
+
+}
+
+
+
+.depot-selector-card .depot-select-wrap > div > button,
+
+.unit-selector-card .unit-select-wrap > div > button {
+
+  border: 1px solid var(--border-default) !important;
+
+  background: var(--bg-input) !important;
+
+  color: var(--text-primary) !important;
+
+  min-height: 42px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  border-radius: 8px !important;
+
+}
+
+
+
+.depot-selector-card.depot-selector-empty .depot-select-wrap > div > button span:first-child,
+
+.unit-selector-card.unit-selector-empty .unit-select-wrap > div > button span:first-child {
+
+  color: var(--text-secondary);
+
+  font-style: italic;
+
+}
+
+
+
+.depot-selector-card .depot-select-wrap > div > button svg { color: #378ADD !important; }
+
+.unit-selector-card .unit-select-wrap > div > button svg { color: #7F77DD !important; }
+
+
+
+.depot-warehouse-icon-pulse {
+
+  animation: coutDepotWarehousePulse 2s ease-in-out infinite;
+
+}
+
+
+
+/* ── Stock dormant ── */
+
+.dead-filter-card {
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-default);
+
+  border-radius: 14px;
+
+  border-top: 3px solid #64748b;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+}
+
+
+
+.dead-filter-card .dead-select-wrap > div > button {
+
+  border: 1px solid var(--border-default) !important;
+
+  background: var(--bg-input) !important;
+
+  color: var(--text-primary) !important;
+
+  min-height: 40px;
+
+  font-weight: 500;
+
+  border-radius: 8px !important;
+
+}
+
+
+
+.dead-period-btn {
+
+  border: 1px solid var(--border-default);
+
+  background: var(--bg-card);
+
+  color: var(--text-secondary);
+
+  font-weight: 500;
+
+  transition: all 0.15s ease;
+
+}
+
+
+
+.dead-period-btn:hover:not(.dead-period-btn--active) {
+
+  background: var(--bg-hover);
+
+  border-color: #BA7517;
+
+  color: var(--text-primary);
+
+}
+
+
+
+.dead-period-btn--active {
+
+  border-color: #BA7517 !important;
+
+  background: #BA7517 !important;
+
+  color: #fff !important;
+
+  font-weight: 600;
+
+  box-shadow: 0 2px 6px rgba(186, 117, 23, 0.3);
+
+}
+
+
+
+.dead-summary-card {
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-default);
+
+  border-left: 4px solid #E24B4A;
+
+  border-radius: 14px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  animation: coutFadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+.dead-summary-card--warn {
+
+  border-left-color: #BA7517;
+
+}
+
+
+
+.dead-stock-card {
+
+  background: var(--bg-card);
+
+  border: 1px solid var(--border-default);
+
+  border-radius: 12px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+
+}
+
+
+
+.dead-stock-card:hover {
+
+  border-color: #378ADD;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+  transform: translateY(-2px);
+
+}
+
+
+
+.dead-stock-card--critical {
+
+  border-left: 4px solid #E24B4A;
+
+  box-shadow: 0 2px 10px rgba(226, 75, 74, 0.12);
+
+}
+
+
+
+.dead-stock-card--warn {
+
+  border-left: 4px solid #BA7517;
+
+}
+
+
+
+.dead-stock-card--ok {
+
+  border-left: 4px solid #1D9E75;
+
+}
+
+
+
+/* ── Alertes ── */
+
+.cout-alert-amber {
+
+  background: var(--bg-card);
+
+  border: 1px solid #BA7517;
+
+  border-left: 4px solid #BA7517;
+
+  border-radius: 12px;
+
+  animation: coutSlideInLeft 0.35s ease both;
+
+}
+
+
+
+.cout-alert-icon-pulse {
+
+  animation: coutAlertPulse 2.5s ease-in-out infinite;
+
+}
+
+
+
+.cout-alert-cta {
+
+  background: #BA7517;
+
+  color: #fff;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-weight: 600;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+}
+
+
+
+.cout-alert-cta:hover {
+
+  transform: translateX(3px);
+
+  box-shadow: 0 2px 8px rgba(186, 117, 23, 0.35);
+
+}
+
+
+
+.cout-empty-float {
+
+  animation: coutFloat 3s ease-in-out infinite;
+
+}
+
+
+
+.cout-empty-state {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 3.5rem 1rem;
+
+  animation: coutFadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+.cout-empty-state__icon {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 64px;
+
+  height: 64px;
+
+  margin-bottom: 1rem;
+
+  border-radius: 16px;
+
+  border: 1px solid var(--border-default);
+
+  background: var(--bg-input);
+
+}
+
+
+
+.depot-add-btn-pulse {
+
+  box-shadow: 0 0 0 3px rgba(226, 75, 74, 0.25);
+
+}
+
+
+
+/* ── Lignes tableau ── */
+
+.cout-row-enter {
+
+  animation: coutRowEnter 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  overflow: hidden;
+
+}
+
+
+
+.cout-row-exit {
+
+  animation: coutRowExit 0.28s ease forwards;
+
+  overflow: hidden;
+
+}
+
+
+
+.cout-data-row {
+
+  position: relative;
+
+  background: var(--bg-card);
+
+  transition: background 0.15s ease;
+
+}
+
+
+
+.cout-data-row::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  bottom: 0;
+
+  width: 3px;
+
+  background: var(--row-accent, #378ADD);
+
+  opacity: 0;
+
+  transition: opacity 0.15s ease;
+
+}
+
+
+
+.cout-data-row:hover {
+
+  background: var(--bg-hover) !important;
+
+}
+
+
+
+.cout-data-row:hover::before {
+
+  opacity: 1;
+
+}
+
+
+
+/* ── Barres empilées + highlight croisé ── */
+
+.cout-stacked-bar {
+
+  display: flex;
+
+  width: 100%;
+
+  height: 12px;
+
+  border-radius: 6px;
+
+  overflow: hidden;
+
+  background: var(--bg-input);
+
+  border: 1px solid var(--border-default);
+
+}
+
+
+
+.cout-stacked-segment {
+
+  transform-origin: left center;
+
+  transition: filter 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+
+  cursor: pointer;
+
+}
+
+
+
+.cout-stacked-segment:hover,
+
+.cout-stacked-segment--active {
+
+  filter: brightness(1.12);
+
+  opacity: 1;
+
+}
+
+
+
+.cout-stacked-segment--dimmed {
+
+  opacity: 0.28;
+
+  filter: saturate(0.6);
+
+}
+
+
+
+.cout-stacked-segment--animate {
+
+  animation: coutSegmentGrow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+}
+
+
+
+/* ── Cartes graphiques ── */
+
+.cout-chart-card {
+
+  border-radius: 14px;
+
+  border: 1px solid var(--border-default);
+
+  background: var(--bg-card);
+
+  padding: 1.25rem;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  animation: coutFadeUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  transition: box-shadow 0.2s ease;
+
+}
+
+
+
+.cout-chart-card:hover {
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+.cout-chart-card-title {
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.07em;
+
+  color: var(--text-muted);
+
+  margin-bottom: 0.75rem;
+
+}
+
+
+
+/* ── Sparkline draw ── */
+
+.cout-sparkline-path {
+
+  stroke-dasharray: var(--spark-len, 200);
+
+  stroke-dashoffset: var(--spark-len, 200);
+
+  animation: coutSparkDraw 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+}
+
+
+
+.cout-sparkline-area {
+
+  opacity: 0;
+
+  animation: coutFadeUp 0.5s ease 0.35s forwards;
+
+}
+
+
+
+/* ── Rentabilité ── */
+
+.cout-profit-card {
+
+  border-radius: 14px;
+
+  border: 1px solid var(--border-default);
+
+  border-top: 3px solid #7F77DD;
+
+  background: var(--bg-card);
+
+  padding: 1.25rem;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  animation: coutFadeUp 0.4s ease both;
+
+}
+
+
+
+.cout-verdict-banner {
+
+  animation: coutVerdictIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  border-radius: 12px;
+
+  font-weight: 600;
+
+}
+
+
+
+.cout-verdict-banner--hero {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1.25rem 1.5rem;
+
+  border-width: 1px;
+
+  border-style: solid;
+
+  border-left-width: 5px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+
+}
+
+
+
+.cout-verdict-banner__icon {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 48px;
+
+  height: 48px;
+
+  border-radius: 12px;
+
+  font-size: 1.35rem;
+
+  font-weight: 700;
+
+  flex-shrink: 0;
+
+  color: #fff;
+
+}
+
+
+
+.cout-verdict-banner__label {
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.1em;
+
+  opacity: 0.75;
+
+  margin-bottom: 2px;
+
+}
+
+
+
+.cout-verdict-banner__msg {
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  letter-spacing: -0.01em;
+
+  line-height: 1.3;
+
+}
+
+
+
+.cout-verdict-banner__hint {
+
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  opacity: 0.8;
+
+}
+
+
+
+/* ── Modales & drawer ── */
+
+.cout-modal-backdrop {
+
+  animation: coutBackdropIn 0.2s ease;
+
+}
+
+
+
+.cout-modal-panel {
+
+  animation: coutModalSlide 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  background: var(--bg-card) !important;
+
+  border: 1px solid var(--border-default) !important;
+
+}
+
+
+
+.cout-drawer-backdrop {
+
+  animation: coutBackdropIn 0.2s ease;
+
+}
+
+
+
+.cout-drawer-panel {
+
+  animation: coutDrawerIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  background: var(--bg-card) !important;
+
+  border-left: 1px solid var(--border-default) !important;
+
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+
+}
+
+
+
+/* ── Toast ── */
+
+.cout-toast {
+
+  animation: coutToastIn 0.3s ease both;
+
+  border-radius: 10px;
+
+  font-weight: 500;
+
+}
+
+
+
+/* ── Skeleton — pulse unifié 1.4s ── */
+
+.cout-shimmer {
+
+  background: linear-gradient(90deg, var(--bg-input) 25%, var(--bg-hover) 50%, var(--bg-input) 75%);
+
+  background-size: 200% 100%;
+
+  animation: coutShimmerSweep 1.4s ease-in-out infinite;
+
+}
+
+
+
+.cout-skeleton-card {
+
+  animation: coutKpiCascade 0.45s ease both;
+
+  background: var(--bg-card);
+
+}
+
+
+
+/* ── Progress ring ── */
+
+.cout-progress-ring {
+
+  /* anneau net, sans glow */
+
+}
+
+
+
+/* ── Bouton export ── */
+
+.cout-export-btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border-radius: 8px;
+
+  padding: 8px 14px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  border: 1px solid var(--border-default);
+
+  background: var(--bg-card);
+
+  color: var(--text-secondary);
+
+  transition: all 0.15s ease;
+
+}
+
+
+
+.cout-export-btn:hover {
+
+  background: var(--bg-hover);
+
+  color: var(--text-primary);
+
+  border-color: var(--text-muted);
+
+}
+
+
+
+/* ── Panneau tableau ── */
+
+.cout-table-panel {
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  border: 1px solid var(--border-default);
+
+  background: var(--bg-card);
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+}
+
+
+
+.cout-table-header {
+
+  background: var(--bg-input);
+
+  border-bottom: 1px solid var(--border-default);
+
+}
+
+
+
+/* ── Légende empilée — pills interactives ── */
+
+.cout-legend-pill {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 4px 10px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  background: var(--bg-input);
+
+  border: 1px solid var(--border-default);
+
+  color: var(--text-secondary);
+
+  cursor: pointer;
+
+  transition: opacity 0.15s ease, border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+
+}
+
+
+
+.cout-legend-pill:hover,
+
+.cout-legend-pill--active {
+
+  border-color: var(--legend-accent, var(--border-default));
+
+  background: var(--bg-card);
+
+  transform: translateY(-1px);
+
+  opacity: 1;
+
+}
+
+
+
+.cout-legend-pill--dimmed {
+
+  opacity: 0.35;
+
+}
+
+
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .cout-kpi-card, .cout-skeleton-card, .cout-hero, .cout-tab-panel,
+
+  .cout-fade-up, .cout-row-enter, .cout-chart-card, .cout-profit-card,
+
+  .cout-toast, .cout-modal-panel, .cout-drawer-panel, .dead-summary-card,
+
+  .cout-verdict-banner, .cout-kpi-delta {
+
+    animation: none !important;
+
+    transition: none !important;
+
+    transform: none !important;
+
+  }
+
+
+
+  .cout-shimmer, .cout-kpi-bar, .cout-empty-float, .depot-warehouse-icon-pulse,
+
+  .depot-add-btn-pulse, .cout-alert-icon-pulse, .cout-stacked-segment--animate,
+
+  .cout-metric-pill-dot--pulse, .cout-sparkline-path, .cout-sparkline-area {
+
+    animation: none !important;
+
+  }
+
+
+
+  .cout-sparkline-path {
+
+    stroke-dashoffset: 0 !important;
+
+  }
+
+
+
+  .cout-sparkline-area {
+
+    opacity: 1 !important;
+
+  }
+
+
+
+  .cout-kpi-card:hover, .dead-stock-card:hover, .cout-metric-pill:hover {
+
+    transform: none !important;
+
+  }
+
+
+
+  .cout-tab-indicator {
+
+    transition: none !important;
+
+  }
+
+}
+
+
+
+/* ── Responsive 1366px / tablette ── */
+
+@media (max-width: 1366px) {
+
+  .cout-hero {
+
+    padding: 1.1rem 1.25rem;
+
+  }
+
+
+
+  .cout-hero-title {
+
+    font-size: 1.25rem;
+
+  }
+
+
+
+  .cout-tab-btn {
+
+    padding: 7px 12px;
+
+    font-size: 11.5px;
+
+  }
+
+
+
+  .cout-tab-panel {
+
+    min-height: 360px;
+
+  }
+
+
+
+  .cout-kpi-card {
+
+    padding: 1rem !important;
+
+  }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  .cout-tabs {
+
+    display: flex;
+
+    width: 100%;
+
+    overflow-x: auto;
+
+  }
+
+
+
+  .cout-drawer-panel {
+
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+  }
+
+
+
+  .cout-verdict-banner--hero {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    text-align: left;
+
+  }
+
+}
+
+
+
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+input[type=number] { -moz-appearance: textfield; }
+
+@media (max-width: 767px) {
+  .cout-table-panel,
+  .cout-dot-grid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cout-hero {
+    padding: 1rem;
+  }
+  .cout-hero-title {
+    font-size: 1.35rem;
+  }
+}
+
+

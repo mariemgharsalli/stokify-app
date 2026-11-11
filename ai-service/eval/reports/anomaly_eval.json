@@ -1,0 +1,8 @@
+{
+  "cleanAlertRate": 0.0,
+  "cleanAlerts": 0,
+  "injectedDetected": 4,
+  "injectedTotal": 4,
+  "precision": 1.0,
+  "recall": 1.0
+}

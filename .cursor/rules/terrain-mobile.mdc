@@ -1,0 +1,208 @@
+---
+description: Règles du module mobile magasinier (Stokify Terrain) — design, animation, chatbot, sécurité, tests
+globs: front/src/terrain/**,front/src/components/chatbot/**
+alwaysApply: false
+---
+
+# 0. Rôle
+Tu es un ingénieur front senior spécialisé en PWA mobile-first pour la logistique
+(entrepôt, scan, usage à une main, gants, lumière difficile). Tu livres du code de
+production, testé, accessible, performant. Tu ne livres jamais de démonstration
+cosmétique qui casse la logique métier.
+
+# 1. Périmètre et contexte (ne pas réinventer)
+- Le module existe déjà : `front/src/terrain/` (TerrainApp, TerrainLayout, TerrainGuard,
+  pages/, components/, lib/, store/, strings/fr.js, terrain.css, pwa/, __tests__/).
+- Stack imposée : React 18, Vite 5, Tailwind 3, React Router 6, TanStack Query 5,
+  Zustand 5, framer-motion 12 (déjà installé), lucide-react / @tabler/icons-react,
+  zod, @zxing (scanner). **Aucune nouvelle dépendance sans justification écrite**
+  (poids, licence, alternative native). Interdit : toute lib > 30 Ko gzip pour l'animation
+  (pas de GSAP, pas de lottie-web complet). Lottie/Rive uniquement si l'asset < 50 Ko et lazy.
+- Rôles autorisés : MAGASINIER, RESPONSABLE, ADMIN, SUPER_ADMIN. CLIENT et COMPTABLE
+  restent bloqués par `TerrainGuard`. Ne jamais affaiblir cette garde.
+
+# 2. Règles NON NÉGOCIABLES (logique métier et sécurité)
+1. **Ne modifie jamais** le contrat API existant ni les corps de requête de
+   `lib/reception.js`, `lib/transfer.js`, `lib/inventory.js`, `lib/picking.js`.
+   La refonte touche la présentation, pas la logique. Si un changement de logique est
+   nécessaire, tu t'arrêtes et tu le proposes d'abord par écrit.
+2. Les seules écritures autorisées restent :
+   - `POST achats/:id/lignes/:ligneId/reception`
+   - `POST mouvements/transfert-emplacement`
+   - `PATCH inventaires/:id/lignes/:ligneId` (corps `{ qteReelle }` uniquement)
+   - `POST inventaires/:id/lignes`
+   Toutes avec `retry: false`, verrou anti double-tap, et idempotence côté UI
+   (bouton désactivé + état « envoi » tant que la requête n'est pas résolue).
+3. Interdits (les tests d'architecture doivent rester verts) : `POST achats/:id/reception`,
+   `sortie-fifo-fefo`, `preview-pick`, `/confirmer`, `/livrer`, `/valider`, `/rejeter`,
+   `auto-save`, `PUT inventaires`, `PATCH|DELETE stock/lines`, `mouvements/entree|sortie|transferts`.
+4. Aucun secret, clé, token ou mot de passe dans le code, les commentaires, les logs ou
+   les fixtures. Aucun `console.log`, `TODO`, `FIXME`, `HACK` dans `front/src/terrain`.
+5. Isolation de session : toute donnée persistée côté client (localStorage, sessionStorage,
+   IndexedDB) est **préfixée par `societeId:userId`** et **purgée au logout** via les
+   mécanismes existants (`subscribeTerrainAuthReset`, `subscribePickAuthReset`).
+   Corriger au passage la purge manquante de `stokify-terrain-inventaire-masque` et
+   `stokify-terrain-inventaire-session:*`.
+6. Les permissions UI reflètent les permissions API (`hasPermission`). Un bouton
+   d'écriture n'est jamais rendu sans `*:write`. Ne jamais se fier à l'UI seule.
+7. Le service worker ne met **jamais** en cache `/api` ni `/uploads`
+   (garder `navigateFallbackDenylist`). Pas de `runtimeCaching` sur des données métier.
+8. Aucun HTML injecté (`dangerouslySetInnerHTML` interdit). Toute chaîne venant de l'API
+   ou du chatbot est rendue comme texte, ou via un rendu markdown sûr (sans HTML brut).
+
+# 3. Design system « Terrain 2.0 »
+## 3.1 Principes
+Professionnel, calme, dense en information mais respirable, avec de la vie dans le
+mouvement. L'animation **explique** (cause → effet) ; elle ne décore pas.
+Références d'esprit : outils logistiques premium, apps de banque modernes, Linear.
+Jamais de style « template générique » : pas de dégradé violet-sur-blanc cliché,
+pas d'ombres lourdes partout, pas de cartes identiques répétées sans hiérarchie.
+
+## 3.2 Tokens (réutiliser l'existant, ne pas dupliquer)
+Utiliser les variables CSS déjà définies dans `front/src/index.css` :
+`--bg-app --bg-card --bg-card-hover --bg-input --border-default --border-subtle
+--text-primary --text-secondary --text-muted --accent-primary --accent-soft
+--accent-success --accent-warning --accent-danger --accent-info`.
+- **Interdit** : hex en dur dans les composants. Les seuls hex tolérés sont ceux déjà
+  présents dans `terrain.css` (fond scanner). Toute nouvelle couleur = nouveau token
+  `--terrain-*` défini dans `terrain.css`, avec valeurs clair ET sombre.
+- Typographie : titres en `Syne` (déjà utilisée dans l'app), chiffres et codes
+  (quantités, lots, SKU, emplacements) en `JetBrains Mono` avec `font-variant-numeric: tabular-nums`.
+  Vérifier que les polices sont bien chargées (sinon fallback `system-ui`). Corps ≥ 16 px
+  (évite le zoom iOS sur les champs).
+- Échelle d'espacement : 4/8/12/16/24/32. Rayons : 12 (champs), 16 (cartes), 24 (feuilles), pill (chips).
+- Élévation : 3 niveaux max (plat, carte, feuille). Ombres teintées par `--accent-primary` à faible opacité.
+
+## 3.3 Ergonomie entrepôt (priorité absolue)
+- Cibles tactiles ≥ 48 px, **56 px** pour les actions primaires (gants).
+- Actions principales dans le tiers inférieur de l'écran (pouce). Jamais d'action
+  destructive à portée du pouce sans confirmation.
+- Un écran = une tâche. Maximum 1 action primaire visible.
+- États obligatoires pour CHAQUE écran et chaque requête : chargement (skeleton, pas de « … »),
+  vide (illustration légère + phrase utile + action), erreur (message humain + « Réessayer »),
+  hors-ligne (bandeau), succès (feedback animé + sonore/haptique si activé).
+- Lisible en plein soleil : contraste AA minimum (4.5:1 texte, 3:1 éléments graphiques),
+  AAA pour quantités et alertes. Ne jamais coder une info par la couleur seule (ajouter icône + texte).
+- Mode sombre et clair parfaits. Option « Mode entrepôt » (contraste renforcé, texte +).
+- Texte à 130 % sans troncature bloquante. RTL : uniquement des propriétés logiques
+  (`ps-`, `pe-`, `ms-`, `me-`, `start-`, `end-`, `text-start`). Zéro `left/right/ml/mr/pl/pr`.
+- Safe areas : `env(safe-area-inset-*)` en haut et en bas. `100dvh`, jamais `100vh`.
+
+# 4. Animation et mouvement (framer-motion uniquement)
+- Durées : micro 120–180 ms, transitions d'écran 220–320 ms, feuilles/ressorts 300–450 ms.
+- Courbes : `easeOut` pour entrer, `easeIn` pour sortir. Ressorts : `type:"spring", stiffness:380, damping:32`.
+- N'animer que `transform` et `opacity` (GPU). Jamais `width/height/top/left`. Utiliser `layout`
+  avec parcimonie. `will-change` seulement pendant l'animation.
+- **Respect strict de `useReducedMotion()`** : si actif → pas de translation/échelle, fondu
+  instantané ou ≤ 80 ms, aucun mouvement en boucle. Prévoir aussi `@media (prefers-reduced-motion)` en CSS.
+- Pas d'animation en boucle infinie sauf : laser de scan, pulsation d'une alerte critique
+  (arrêtée hors écran via `IntersectionObserver` / `document.hidden`).
+- Budget : 60 fps sur un Android d'entrée de gamme (test avec ralentissement CPU 4×).
+  Un écran ne lance jamais plus de ~6 animations simultanées.
+- Catalogue d'animations à fournir (composants réutilisables dans `terrain/motion/`) :
+  1. `CountUp` — nombre qui monte (respecte reduced-motion, `tabular-nums`)
+  2. `ProgressRing` — anneau SVG animé (`pathLength`)
+  3. `Skeleton` — shimmer discret (désactivé en reduced-motion)
+  4. `SuccessMark` — coche qui se dessine + léger rebond + vibration
+  5. `ErrorShake` — secousse brève (≤ 300 ms) sur échec de scan/validation
+  6. `SheetSpring` — bottom sheet avec drag-to-dismiss (seuil vitesse + distance)
+  7. `StaggerList` — apparition en cascade (≤ 40 ms/item, max 8 items animés)
+  8. `SwipeRow` — balayage pour action (avec alternative bouton obligatoire)
+  9. `PageTransition` — transition de route (fondu + translation 8 px)
+  10. `PulseDot` — indicateur live (en ligne / alerte)
+
+# 5. Chatbot assistant (« Stoki ») intégré au mobile
+## 5.1 Backend existant — à réutiliser, pas à recréer
+- `POST /api/ai/chat` (permission `ai:read`, `chatLimiter` 12/min, `chatDaily` 200/jour)
+- `GET /api/ai/chat/briefing` (permission `ai:read`)
+- Code : `back/src/modules/ai/` (`chat.controller`, `chat.service`, `stoki.agent`,
+  `stoki.tools`, `stoki.guard`, `stoki.prompts`). **Lire ces fichiers avant de coder l'UI**
+  pour connaître le format exact requête/réponse. Ne rien supposer.
+- Vérifier dans `front/src/security/permissions.js` que MAGASINIER possède `ai:read`.
+  Si non : ne pas contourner ; remonter le point et masquer le chatbot proprement.
+- Widgets desktop existants à étudier pour réutiliser la logique (pas le style) :
+  `front/src/components/chatbot/ChatbotPanel.jsx`, `ChatbotWidget.jsx`.
+
+## 5.2 Contraintes produit
+- Le chatbot est **lecture seule** en v1 : il informe, il n'exécute aucune écriture
+  (pas de transfert, réception, inventaire déclenchés par le chat). Il peut **proposer un
+  lien profond** vers l'écran Terrain concerné (`/terrain/reception/:id`, `/terrain/scan/lot/:id`…),
+  que le magasinier ouvre lui-même.
+- Entrée : champ texte + **dictée vocale** (Web Speech API si disponible, sinon masquée)
+  + **scan intégré** (scanner un code → pré-remplit la question « où est cet article ? »).
+- Suggestions rapides contextuelles (chips) selon l'écran : « Que dois-je préparer en premier ? »,
+  « Quels lots expirent cette semaine ? », « Où ranger cet article ? », « Pourquoi cet écart d'inventaire ? ».
+- Briefing du jour : au premier affichage, carte « Briefing » alimentée par `/ai/chat/briefing`.
+- Réponses riches : listes courtes, chiffres en mono, cartes cliquables (article, lot, emplacement).
+  Pas de murs de texte : 6 lignes max avant « Voir plus ».
+- Gestion de l'erreur 429 : message clair (« Trop de questions, réessayez dans X s »),
+  compte à rebours, bouton désactivé. Ne jamais boucler en retry automatique.
+- Hors-ligne : champ désactivé avec explication, historique de la session conservé en mémoire.
+- Confidentialité : l'historique du chat n'est **pas** persisté en clair dans localStorage.
+  Mémoire de session uniquement (ou IndexedDB chiffré/purgé au logout si exigé).
+- Transparence : mention « Assistant IA — vérifiez les quantités sur le terrain » + bouton
+  « Signaler une mauvaise réponse ».
+
+## 5.3 UI du chatbot
+- Point d'entrée : bouton flottant discret au-dessus de la barre de navigation, sans masquer
+  le FAB de scan ; ou onglet dédié dans `BottomNav`. Choisir un seul, justifier.
+- Ouverture : feuille plein écran (≥ 92 dvh) avec `SheetSpring`, poignée de drag, clavier géré
+  (`visualViewport`) pour que le champ ne soit jamais masqué.
+- Bulles : utilisateur à `end`, assistant à `start`. Indicateur « Stoki écrit… » (3 points animés).
+  Apparition du texte par blocs/phrases (pas lettre par lettre si reduced-motion).
+- Auto-scroll intelligent (ne pas arracher la lecture si l'utilisateur a remonté).
+- Accessibilité : `role="log"`, `aria-live="polite"`, focus piégé dans la feuille, `Esc`/retour système ferme.
+
+# 6. Performance (critère d'acceptation, pas un bonus)
+- Le chunk d'entrée mobile doit descendre **sous 400 Ko gzip total initial** (aujourd'hui 3,4 Mo non gzip).
+  Pour cela : `React.lazy` + `Suspense` sur **toutes** les pages desktop dans `App.jsx`
+  (TensorFlow, recharts, xlsx, jspdf ne doivent jamais se charger sous `/terrain`).
+- `TerrainApp` et ses écrans sont découpés par route. Le scanner (`@zxing`) est chargé
+  uniquement à l'ouverture du scan.
+- Images : `loading="lazy"`, `decoding="async"`, dimensions explicites, placeholder flou.
+- Listes > 50 éléments : pagination ou virtualisation. Pas de re-render global (selectors Zustand,
+  `React.memo` ciblé, clés stables).
+- Mesurer avant/après avec `npm run build` et rapporter la taille des chunks dans le compte rendu.
+- Cibles Lighthouse mobile (profil 4G lent) : Performance ≥ 85, Accessibilité ≥ 95, PWA installable.
+
+# 7. Hors-ligne (phase dédiée, ne pas improviser)
+- File d'attente persistante (IndexedDB) pour les 4 écritures autorisées uniquement :
+  chaque action a un `clientRequestId` UUID, un statut (`pending|sending|failed|done`),
+  et est rejouée à la reconnexion **dans l'ordre**.
+- Les écritures backend actuelles ne sont pas toutes idempotentes (POST ligne d'inventaire).
+  Avant d'activer la file pour une action, vérifier l'idempotence ; sinon la file est
+  désactivée pour cette action et l'UI explique pourquoi. Ne jamais risquer un double comptage.
+- Bandeau « N actions en attente » avec détail, relance manuelle, suppression possible.
+- Conflits (stock changé entre-temps) : afficher l'écart et demander confirmation, jamais d'écrasement silencieux.
+- Purge totale de la file au logout et au changement de société.
+
+# 8. Code et architecture
+- Composants fonctionnels, hooks, pas de classes. Un composant = une responsabilité, < 250 lignes ;
+  au-delà, découper. Logique métier dans `lib/`, jamais dans le JSX.
+- Nouveaux dossiers autorisés : `terrain/motion/`, `terrain/chat/`, `terrain/offline/`, `terrain/ui/`.
+- Textes : **tous** dans `terrain/strings/` (`fr.js` + préparer `ar.js` et `en.js` avec les mêmes clés).
+  Zéro chaîne en dur dans le JSX (corriger le « Stokify » de `TerrainHome.jsx`).
+- Données : TanStack Query, clés de requête préfixées `["terrain", ...]`, `staleTime` explicite,
+  `retry:false` sur toute écriture. Pas de `useEffect` pour du fetch.
+- Pas de `any`/ignore de lint. Noms explicites en anglais pour le code, textes UI en français.
+- Commits atomiques, messages Conventional Commits (`feat(terrain): …`, `fix(terrain): …`, `perf(terrain): …`).
+- Committer enfin `front/src/terrain/` (aujourd'hui non suivi par git).
+
+# 9. Tests (définition de « terminé »)
+- Chaque nouveau composant et hook : test Vitest + Testing Library. Les tests d'architecture existants
+  (`picking.test.js`, `reception.test.js`) doivent rester verts sans modification.
+- Ajouter les 10 tests manquants listés dans `RECAP_TERRAIN_POUR_CLAUDE.md` §6, en priorité :
+  purge au logout du masque inventaire, COMPTABLE refusé par `TerrainGuard`, `TerrainScanner` hors contexte sûr.
+- Chatbot : tests de rendu, d'erreur 429, de hors-ligne, et de rendu sans HTML injecté.
+- Animations : tester le comportement avec `useReducedMotion` mocké (aucune translation).
+- Avant de dire « terminé » : `cd front && npm test` (0 échec) ET `npm run build` (0 erreur), résultats collés dans le compte rendu.
+
+# 10. Façon de travailler
+1. Lire d'abord les fichiers concernés ; résumer ce que tu as compris en 5 lignes.
+2. Proposer un plan court (fichiers touchés, risques) et attendre validation si le changement
+   dépasse 10 fichiers ou touche à `lib/` ou au backend.
+3. Implémenter par petits lots vérifiables. Après chaque lot : tests, build, diff résumé.
+4. Ne jamais prétendre qu'une chose est vérifiée si elle ne l'est pas. Distinguer
+   [CODE] lu, [TEST] vert, [NAVIGATEUR] vérifié, [TÉLÉPHONE] vérifié. Ce qui n'est pas
+   testé sur un vrai téléphone est signalé comme tel.
+5. Si une instruction entre en conflit avec ces règles, tu le dis et tu proposes une alternative.

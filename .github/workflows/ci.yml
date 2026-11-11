@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            back/package-lock.json
+            front/package-lock.json
+      - name: Tests backend
+        working-directory: back
+        run: npm ci && npm test
+      - name: Build frontend
+        working-directory: front
+        run: npm ci && npm run build
+
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: ai-service/requirements.txt
+      - name: Tests service IA
+        working-directory: ai-service
+        run: pip install -r requirements.txt && pytest -q

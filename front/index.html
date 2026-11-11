@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Stokify Terrain" />
+    <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0f1117" />
+    <script>
+      (function () {
+        try {
+          var stored = JSON.parse(localStorage.getItem("stokify-theme") || "{}");
+          var pref = stored?.state?.preference || "dark";
+          var effective =
+            pref === "auto"
+              ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light"
+              : pref;
+          document.documentElement.classList.add(effective);
+          document.documentElement.setAttribute("data-theme", effective);
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+        }
+        try {
+          var lang = localStorage.getItem("stokify-landing-lang") || "fr";
+          var known = { fr: 1, en: 1, ar: 1, es: 1, de: 1, it: 1 };
+          if (!known[lang]) lang = "fr";
+          document.documentElement.lang = lang;
+          document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+          document.documentElement.setAttribute("data-lang", lang);
+        } catch (e2) {}
+      })();
+    </script>
+    <title>Stokify — Gestion de stock intelligente</title>
+    <link rel="icon" type="image/png" href="/logos/logo-stokify.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-navy-950">
+    <div id="root"></div>
+    <div id="stokify-overlay-root" aria-hidden="true"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

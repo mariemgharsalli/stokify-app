@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Societe` ADD COLUMN `deadStockSeuil` INTEGER NOT NULL DEFAULT 50000;

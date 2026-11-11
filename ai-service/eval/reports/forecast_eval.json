@@ -1,0 +1,12 @@
+{
+  "articles": 0,
+  "averageMase": {
+    "naive": null,
+    "holt_winters": null,
+    "nbeats": null,
+    "hybrid": null
+  },
+  "championFrequency": {},
+  "mostFrequentChampion": null,
+  "rows": []
+}

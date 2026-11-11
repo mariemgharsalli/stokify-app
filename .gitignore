@@ -1,0 +1,20 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+ai-service/models/**/*.pkl
+
+# Exclusions du commit de déploiement (fichiers conservés sur le disque)
+terrain-review-pack.zip
+.test-campaign/
+RECAP_TERRAIN_POUR_CLAUDE.md
+back/_fix-dup-c001.tmp.js
+ai-service/__pycache__/
+.cert/
+back/.cert/
+*.pkl
+*.pyc
+__pycache__/

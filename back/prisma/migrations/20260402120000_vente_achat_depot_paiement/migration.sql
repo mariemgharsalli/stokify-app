@@ -1,0 +1,13 @@
+-- AlterTable
+ALTER TABLE `Vente` ADD COLUMN `depotId` INTEGER NULL;
+
+-- AlterTable
+ALTER TABLE `Achat` ADD COLUMN `depotId` INTEGER NULL,
+    ADD COLUMN `montantRegle` DOUBLE NOT NULL DEFAULT 0,
+    ADD COLUMN `statutPaiement` VARCHAR(191) NOT NULL DEFAULT 'NON_REGLE';
+
+-- AddForeignKey
+ALTER TABLE `Vente` ADD CONSTRAINT `Vente_depotId_fkey` FOREIGN KEY (`depotId`) REFERENCES `Depot`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Achat` ADD CONSTRAINT `Achat_depotId_fkey` FOREIGN KEY (`depotId`) REFERENCES `Depot`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

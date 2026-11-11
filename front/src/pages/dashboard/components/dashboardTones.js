@@ -1,0 +1,91 @@
+/** Tone palette — CSS vars + chart hex for Recharts */
+export const DASHBOARD_TONES = {
+  danger: {
+    accent: "var(--accent-danger)",
+    text: "text-[var(--danger-text)]",
+    textSolid: "text-red-500 dark:text-red-400",
+    bg: "bg-[var(--danger-bg)]",
+    ring: "ring-[var(--danger-border)]",
+    bar: "bg-red-500",
+    glow: "bg-red-500/20",
+    badge: "bg-[var(--danger-bg)] text-[var(--danger-text)] border border-[var(--danger-border)]",
+    iconBg: "bg-red-500/10 ring-1 ring-red-500/25",
+    cardGradient: "from-red-500/[0.06] to-transparent",
+    chart: "#ef4444",
+  },
+  warning: {
+    accent: "var(--accent-warning)",
+    text: "text-[var(--warning-text)]",
+    textSolid: "text-amber-500 dark:text-amber-400",
+    bg: "bg-[var(--warning-bg)]",
+    ring: "ring-[var(--warning-border)]",
+    bar: "bg-amber-500",
+    glow: "bg-amber-500/20",
+    badge: "bg-[var(--warning-bg)] text-[var(--warning-text)] border border-[var(--warning-border)]",
+    iconBg: "bg-amber-500/10 ring-1 ring-amber-500/25",
+    cardGradient: "from-amber-500/[0.06] to-transparent",
+    chart: "#f59e0b",
+  },
+  primary: {
+    accent: "var(--accent-info)",
+    text: "text-[var(--info-text)]",
+    textSolid: "text-blue-500 dark:text-blue-400",
+    bg: "bg-[var(--info-bg)]",
+    ring: "ring-[var(--info-border)]",
+    bar: "bg-blue-500",
+    glow: "bg-blue-500/20",
+    badge: "bg-[var(--info-bg)] text-[var(--info-text)] border border-[var(--info-border)]",
+    iconBg: "bg-blue-500/10 ring-1 ring-blue-500/25",
+    cardGradient: "from-blue-500/[0.06] to-transparent",
+    chart: "#3b82f6",
+  },
+  success: {
+    accent: "var(--accent-success)",
+    text: "text-[var(--success-text)]",
+    textSolid: "text-emerald-500 dark:text-emerald-400",
+    bg: "bg-[var(--success-bg)]",
+    ring: "ring-[var(--success-border)]",
+    bar: "bg-emerald-500",
+    glow: "bg-emerald-500/20",
+    badge: "bg-[var(--success-bg)] text-[var(--success-text)] border border-[var(--success-border)]",
+    iconBg: "bg-emerald-500/10 ring-1 ring-emerald-500/25",
+    cardGradient: "from-emerald-500/[0.06] to-transparent",
+    chart: "#22c55e",
+  },
+  accent: {
+    accent: "#06b6d4",
+    text: "text-cyan-600 dark:text-cyan-300",
+    textSolid: "text-cyan-600 dark:text-cyan-400",
+    bg: "bg-cyan-500/10",
+    ring: "ring-cyan-500/25",
+    bar: "bg-cyan-400",
+    glow: "bg-cyan-400/20",
+    badge: "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/25",
+    iconBg: "bg-cyan-500/10 ring-1 ring-cyan-500/25",
+    cardGradient: "from-cyan-500/[0.06] to-transparent",
+    chart: "#06b6d4",
+  },
+};
+
+export const MOVEMENT_BAR_COLORS = {
+  in: "var(--accent-success, #22c55e)",
+  out: "var(--accent-danger, #ef4444)",
+  transfer: "var(--accent-info, #3b82f6)",
+  inventory: "var(--accent-warning, #f59e0b)",
+};
+
+export const MOVEMENT_BAR_HEX = {
+  in: "#22c55e",
+  out: "#ef4444",
+  transfer: "#3b82f6",
+  inventory: "#f59e0b",
+};
+
+export const DASHBOARD_SURFACE = {
+  pageOuter: "dashboard-page-bg min-h-full w-full",
+  page: "",
+  card: "dash-glass-card",
+  cardHover: "dash-glass-card dash-glass-hover",
+  hero: "relative overflow-hidden rounded-[1.75rem] border border-[var(--dash-line)] shadow-[var(--dash-shadow)]",
+  contextBar: "dash-glass-card",
+};

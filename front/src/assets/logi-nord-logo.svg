@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="LogiNord Distribution">
+  <rect width="120" height="120" rx="18" fill="#1B3A5C"/>
+  <path d="M24 78V42h72v36H24z" fill="#2A9D8F" opacity="0.25"/>
+  <path d="M32 78V50h18v28H32zm38 0V50h18v28H70z" fill="#ffffff" opacity="0.92"/>
+  <path d="M28 78h64v8H28z" fill="#2A9D8F"/>
+  <path d="M44 50h32v6H44z" fill="#ffffff" opacity="0.55"/>
+  <path d="M18 38l42-16 42 16v8H18V38z" fill="#2A9D8F"/>
+  <path d="M52 22l16 6-16 6-16-6 16-6z" fill="#ffffff"/>
+  <path d="M86 58c8 0 14 6 14 14s-6 14-14 14" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="86" cy="72" r="5" fill="#ffffff"/>
+</svg>

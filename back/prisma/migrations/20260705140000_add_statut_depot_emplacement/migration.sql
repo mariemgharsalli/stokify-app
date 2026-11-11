@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `Depot` ADD COLUMN `statut` VARCHAR(191) NOT NULL DEFAULT 'ACTIF';
+
+-- AlterTable
+ALTER TABLE `Emplacement` ADD COLUMN `statut` VARCHAR(191) NOT NULL DEFAULT 'ACTIF';

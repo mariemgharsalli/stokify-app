@@ -1,0 +1,64 @@
+﻿"Code article";"Désignation";"Unité";"Dépôt";"Quantité"
+"telephone";"telephone";"UNjhghgh";"DEP001 — Depot Principal";1
+"MARIEM";"MARIEM";"UN";"DEP001 — Depot Principal";520
+"MARIEM";"MARIEM";"UN";"DEP001 — Depot Principal";0
+"YGFYHFTYYTHTFT";"YFYHG";"UN";"DEP001 — Depot Principal";100
+"lala";"lala12";"UN";"DEP001 — Depot Principal";100
+"vitalio";"vitalio";"UN";"DEP001 — Depot Principal";50
+"vitalio";"vitalio";"UN";"DEP001 — Depot Principal";0
+"IMP-1781634426025-01";"Produit test import 1";"UN";"DEP001 — Depot Principal";5
+"IMP-1781634426025-02";"Produit test import 2";"UN";"DEP001 — Depot Principal";8
+"IMP-1781634426025-03";"Produit test import 3";"UN";"DEP001 — Depot Principal";12
+"IMP-1781634426025-07";"Produit test import 7";"UN";"DEP001 — Depot Principal";20
+"IMP-1781634426025-09";"Produit test import 9";"UN";"DEP001 — Depot Principal";6
+"IMP-1781634474882-01";"Produit test import 1";"UN";"DEP001 — Depot Principal";5
+"IMP-1781634474882-02";"Produit test import 2";"UN";"DEP001 — Depot Principal";8
+"IMP-1781634474882-03";"Produit test import 3";"UN";"DEP001 — Depot Principal";12
+"IMP-1781634474882-07";"Produit test import 7";"UN";"DEP001 — Depot Principal";20
+"IMP-1781634474882-09";"Produit test import 9";"UN";"DEP001 — Depot Principal";6
+"XLSX-1783189143812-01";"Produit Excel test 1";"UN";"DEP001 — Depot Principal";5
+"XLSX-1783189143812-02";"Produit Excel test 2";"UN";"DEP001 — Depot Principal";8
+"XLSX-1783189143812-03";"Produit Excel test 3";"UN";"DEP001 — Depot Principal";12
+"IMP-1783189144871-01";"Produit test import 1";"UN";"DEP001 — Depot Principal";5
+"IMP-1783189144871-02";"Produit test import 2";"UN";"DEP001 — Depot Principal";8
+"IMP-1783189144871-03";"Produit test import 3";"UN";"DEP001 — Depot Principal";12
+"IMP-1783189144871-07";"Produit test import 7";"UN";"DEP001 — Depot Principal";20
+"IMP-1783189144871-09";"Produit test import 9";"UN";"DEP001 — Depot Principal";6
+"SJS-1783189182854";"SheetJS test";"UN";"DEP001 — Depot Principal";7
+"RT-1783190664680-1";"SheetJS test";"UN";"DEP001 — Depot Principal";7
+"RT-1783190664680-2";"Produit test import 9";"UN";"DEP001 — Depot Principal";6
+"RT-1783190664680-3";"Produit test import 7";"UN";"DEP001 — Depot Principal";20
+"RT-1783190664680-4";"Produit test import 2";"UN";"DEP001 — Depot Principal";8
+"RT-1783190664680-5";"Produit test import 1";"UN";"DEP001 — Depot Principal";5
+"RT-1783190966859-1";"Produit test import 1";"UN";"DEP001 — Depot Principal";5
+"RT-1783190966859-2";"Produit test import 2";"UN";"DEP001 — Depot Principal";8
+"RT-1783190966859-3";"Produit test import 7";"UN";"DEP001 — Depot Principal";20
+"RT-1783190966859-4";"Produit test import 9";"UN";"DEP001 — Depot Principal";6
+"RT-1783190966859-5";"SheetJS test";"UN";"DEP001 — Depot Principal";7
+"TPL-1783191384947-1";"Exemple produit A";"UN";"DEP001 — Depot Principal";25
+"TPL-1783191384947-2";"Exemple produit B";"UN";"DEP001 — Depot Principal";40
+"IMP-1783191399935-01";"Produit test import 1";"UN";"DEP001 — Depot Principal";5
+"IMP-1783191399935-02";"Produit test import 2";"UN";"DEP001 — Depot Principal";8
+"IMP-1783191399935-03";"Produit test import 3";"UN";"DEP001 — Depot Principal";12
+"IMP-1783191399935-04";"Produit fournisseur invalide";"UN";"DEP001 — Depot Principal";1
+"IMP-1783191399935-06";"Produit marque invalide";"UN";"DEP001 — Depot Principal";1
+"IMP-1783191399935-07";"Produit test import 7";"UN";"DEP001 — Depot Principal";20
+"IMP-1783191399935-09";"Produit test import 9";"UN";"DEP001 — Depot Principal";6
+"HTTP-1783192039622-1";"Exemple produit A";"UN";"DEP001 — Depot Principal";25
+"HTTP-1783192039622-2";"Exemple produit B";"UN";"DEP001 — Depot Principal";40
+"TPL-1783192565748-1";"Exemple produit A";"UN";"DEP001 — Depot Principal";25
+"TPL-1783192565748-2";"Exemple produit B";"UN";"DEP001 — Depot Principal";40
+"telephone";"telephone";"UNjhghgh";"Dep002 — depot secondaire";0
+"vitalio";"vitalio";"UN";"Dep002 — depot secondaire";1
+"electro";"cg";"UN";"Dep002 — depot secondaire";100
+"yaourt12";"yaourt";"UN";"Dep002 — depot secondaire";100
+"grecose";"grecose";"UN";"Dep002 — depot secondaire";0
+"Clediss";"Clediss";"UN";"Dep002 — depot secondaire";0
+"vitalio";"vitalio";"UN";"Dep003 — Depot mestir";900
+"yaourt12";"yaourt";"UN";"Dep003 — Depot mestir";500
+"yaourt12";"yaourt";"UN";"Dep003 — Depot mestir";50
+"EMP2-1783192512003";"Produit test emplacement";"UN";"DEP_TEST_A_1783192512003 — Depot Test A 1783192512003";5
+"TPL-1783192512003-2";"Exemple produit B";"UN";"DEP_TEST_A_1783192512003 — Depot Test A 1783192512003";40
+"EMP2-1783192564881";"Produit test emplacement";"UN";"DEP_TEST_A_1783192564881 — Depot Test A 1783192564881";5
+"TPL-1783192564881-1";"Exemple produit A";"UN";"DEP_TEST_A_1783192564881 — Depot Test A 1783192564881";25
+"TPL-1783192564881-2";"Exemple produit B";"UN";"DEP_TEST_A_1783192564881 — Depot Test A 1783192564881";40
